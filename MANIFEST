@@ -1,0 +1,5 @@
+Build.PL
+lib/Digest/ED2K.pm
+MANIFEST			This list of files
+t/run.t
+t/tests/Test/Digest/ED2K.pm

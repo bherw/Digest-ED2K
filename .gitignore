@@ -1,0 +1,9 @@
+# Module::Build stuff
+blib/
+_build/
+Build
+MYMETA.*
+
+# Backup files
+*~
+*#
