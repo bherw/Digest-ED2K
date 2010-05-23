@@ -31,7 +31,7 @@ sub add {
 	my $self = shift;
 	if(defined $self->{_digest}) {
 		require Carp;
-		Carp::croak "Can't add to a ed2k digest after it's been finalized. Please reset the object if you wish to reuse it.";
+		Carp::croak("Can't add to a ed2k digest after it's been finalized. Please reset the object if you wish to reuse it.");
 	}
 	$self->{buffer} .= join '', @_;
 	while(length($self->{buffer}) >= CHUNK_SIZE) {
