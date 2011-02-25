@@ -1,5 +1,4 @@
 use common::sense;
-use Test::Class;
 use Test::Most tests => 11;
 use constant CHUNK_SIZE => 9728000;
 

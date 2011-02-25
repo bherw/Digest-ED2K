@@ -3,7 +3,7 @@ use base qw(Digest::base);
 use common::sense;
 use Digest::MD4;
 use Exporter 'import';
-@EXPORT_OK = qw(ed2k ed2k_hex ed2k_base64);
+our @EXPORT_OK = qw(ed2k ed2k_hex ed2k_base64);
 use version 0.77; our $VERSION = version->declare('v1.0');
 
 use constant CHUNK_SIZE => 9728000;
