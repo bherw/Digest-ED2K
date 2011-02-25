@@ -15,7 +15,6 @@ my %module_build_args = (
 		'Carp'           => '0',
 		'common::sense'  => '0',
 		'Digest::MD4'    => '0',
-		'Exporter::Tidy' => '0',
 		'version'        => '0.77',
 	},
 );
