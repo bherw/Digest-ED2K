@@ -2,8 +2,9 @@ package Digest::ED2K;
 use base qw(Digest::base);
 use common::sense;
 use Digest::MD4;
-use Exporter::Tidy other => [qw(ed2k ed2k_hex ed2k_base64)];
-use version 0.77; our $VERSION = version->declare('v0.1');
+use Exporter 'import';
+@EXPORT_OK = qw(ed2k ed2k_hex ed2k_base64);
+use version 0.77; our $VERSION = version->declare('v1.0');
 
 use constant CHUNK_SIZE => 9728000;
 
@@ -56,16 +57,15 @@ sub digest {
 	return $self->{_digest};
 }
 
-sub ed2k {
-	print @_ . "\n";
+sub ed2k($) {
 	Digest::ED2K->new->add(@_)->digest;
 }
 
-sub ed2k_hex {
+sub ed2k_hex($) {
 	Digest::ED2K->new->add(@_)->hexdigest;
 }
 
-sub ed2k_base64 {
+sub ed2k_base64($) {
 	Digest::ED2K->new->add(@_)->b64digest;
 }
 
