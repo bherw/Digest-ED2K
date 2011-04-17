@@ -1,5 +1,5 @@
 use common::sense;
-use Test::Most tests => 11;
+use Test::More tests => 11;
 use constant CHUNK_SIZE => 9728000;
 
 use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);

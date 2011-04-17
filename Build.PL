@@ -9,6 +9,9 @@ my %module_build_args = (
 	module_name   => 'Digest::ED2K',
 	create_readme => 1,
 	license       => 'isc',
+	build_requires => {
+		'Test::More'     => 0,
+	},
 	requires      => {
 		'perl'           => '5.08.0',
 		'base'           => '0',

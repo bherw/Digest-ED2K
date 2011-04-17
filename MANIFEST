@@ -2,3 +2,5 @@ Build.PL
 lib/Digest/ED2K.pm
 MANIFEST			This list of files
 t/ed2k.t
+README
+META.yml

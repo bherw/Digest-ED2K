@@ -1,0 +1,52 @@
+NAME
+    Digest::ED2K - Perl implementation of the ED2k hash used in ED2K URIs
+
+SYNOPSIS
+     # Functional style
+     use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
+
+     $hash = ed2k $data;
+     $hash = ed2k_hex $data;
+     $hash = ed2k_base64 $data;
+
+
+     # OO style
+     use Digest::ED2K;
+
+     $ctx = Digest::ED2K->new;
+
+     $ctx->add($data);
+     $ctx->addfile(*FILE);
+
+     $digest = $ctx->digest;
+     $digest = $ctx->hexdigest;
+     $digest = $ctx->b64digest;
+
+DESCRIPTION
+    This module allows you to use the ED2K hash algorithm from within Perl
+    programs. It has the same interface as Digest.
+
+SEE ALSO
+    Exporter::Tiny for additional import options.
+
+AUTHORS
+    Kulag <g.kulag@gmail.com>
+
+LICENSE
+    Copyright (c) 2010, Kulag <g.kulag@gmail.com>
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted, provided that the above
+    copyright notice and this permission notice appear in all copies.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+REPOSITORY
+    http://github.com/Kulag/Digest-ED2K
+

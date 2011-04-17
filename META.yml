@@ -1,0 +1,26 @@
+---
+abstract: 'Perl implementation of the ED2k hash used in ED2K URIs'
+author:
+  - 'Kulag <g.kulag@gmail.com>'
+build_requires:
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3624'
+license: isc
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Digest-ED2K
+provides:
+  Digest::ED2K:
+    file: lib/Digest/ED2K.pm
+    version: v1.0.0
+requires:
+  Carp: 0
+  Digest::MD4: 0
+  base: 0
+  common::sense: 0
+  perl: v5.08.0
+  version: 0.77
+version: v1.0.0
