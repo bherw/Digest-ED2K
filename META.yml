@@ -1,7 +1,7 @@
 ---
 abstract: 'Perl implementation of the ED2k hash used in ED2K URIs'
 author:
-  - 'Kulag <g.kulag@gmail.com>'
+  - 'Benjamin Herweyer <benjamin.herweyer@gmail.com>'
 build_requires:
   Test::More: 0
 configure_requires:

@@ -109,7 +109,7 @@ L<Exporter::Tiny> for additional import options.
 
 =head1 AUTHORS
 
-Kulag <g.kulag@gmail.com>
+Benjamin Herweyer <benjamin.herweyer@gmail.com>
 
 =head1 LICENSE
 
