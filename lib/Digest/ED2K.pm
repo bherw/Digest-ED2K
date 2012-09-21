@@ -74,7 +74,7 @@ __END__
 
 =head1 NAME
 
-Digest::ED2K - Perl implementation of the ED2k hash used in ED2K URIs
+Digest::ED2K - Perl implementation of the ED2K hash used in ED2K URIs
 
 =head1 SYNOPSIS
 
@@ -103,15 +103,13 @@ Digest::ED2K - Perl implementation of the ED2k hash used in ED2K URIs
 This module allows you to use the ED2K hash algorithm from within Perl programs.
 It has the same interface as L<Digest>.
 
-=head1 SEE ALSO
-
-L<Exporter::Tiny> for additional import options.
-
-=head1 AUTHORS
+=head1 AUTHOR
 
 Benjamin Herweyer <benjamin.herweyer@gmail.com>
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2011 by Benjamin Herweyer
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -128,5 +126,3 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 =head1 REPOSITORY
 
 http://github.com/Kulag/Digest-ED2K
-
-=cut
