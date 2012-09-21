@@ -74,36 +74,88 @@ __END__
 
 =head1 NAME
 
-Digest::ED2K - Perl implementation of the ED2K hash used in ED2K URIs
+Digest::ED2K - Calculate ED2K digests
 
 =head1 SYNOPSIS
 
 	# Functional
 	use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
 
-	$hash = ed2k $data, ...;
-	$hash = ed2k_hex $data, ...;
-	$hash = ed2k_base64 $data, ...;
+	my $digest = ed2k $data;
+	my $hexdigest = ed2k_hex $data
+	my $base64_digest = ed2k_base64 $data;
 
 	# Object Oriented
 	use Digest::ED2K;
 
- # OO style
- use Digest::ED2K;
+	my $ctx = Digest::ED2K->new;
 
- $ctx = Digest::ED2K->new;
+	$ctx->add($bytes);
+	$ctx->addfile(*FILE);
 
- $ctx->add($data);
- $ctx->addfile(*FILE);
-
- $digest = $ctx->digest;
- $digest = $ctx->hexdigest;
- $digest = $ctx->b64digest;
+	my $digest = $ctx->digest;
+	my $hexdigest = $ctx->hexdigest;
+	my $base64_digest = $ctx->b64digest;
 
 =head1 DESCRIPTION
 
-This module allows you to use the ED2K hash algorithm from within Perl programs.
-It has the same interface as L<Digest>.
+L<Digest::ED2K> progressively calculates ED2K digests of data.
+
+=head1 FUNCTIONS
+
+L<Digest::ED2K> implements the following functions.
+
+=head2 C<ed2k>
+
+	my $digest = ed2k $bytes, ...;
+
+Generate binary ED2K digest for string.
+
+=head2 C<ed2k_hex>
+
+	my $hexdigest = ed2k_hex $bytes, ...;
+
+Generate hex ED2K digest for string.
+
+=head2 C<ed2k_base64>
+
+	my $base64_digest = ed2k_base64 $bytes, ...;
+
+Generate base64 ED2K digest for string.
+
+=head1 METHODS
+
+L<Digest::ED2K> inherits all methods from L<Digest::base> (See L<Digest> for
+documentation) and implements the following new ones.
+
+=head2 C<new>
+
+	my $ctx = Digest->new('ED2K');
+	my $ctx = Digest::ED2K->new;
+
+Construct a new L<Digest::ED2K> object.
+
+=head2 C<add>
+
+	$ctx = $ctx->add($bytes, ...);
+
+Append binary data.
+
+=head2 C<clone>
+
+	my $ctx_clone = $ctx->clone;
+
+Clone this message context.
+
+=head2 C<digest>
+
+	my $digest = $ctx->digest;
+
+Binary ED2K digest for this message context.
+
+=head1 SEE ALSO
+
+L<Digest>, L<Digest::MD4>
 
 =head1 AUTHOR
 
