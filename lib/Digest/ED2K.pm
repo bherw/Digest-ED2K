@@ -57,19 +57,19 @@ sub digest {
 	return $self->{_digest};
 }
 
-sub ed2k($) {
+sub ed2k(@) {
 	Digest::ED2K->new->add(@_)->digest;
 }
 
-sub ed2k_hex($) {
+sub ed2k_hex(@) {
 	Digest::ED2K->new->add(@_)->hexdigest;
 }
 
-sub ed2k_base64($) {
+sub ed2k_base64(@) {
 	Digest::ED2K->new->add(@_)->b64digest;
 }
 
-1;
+0x6B63;
 __END__
 
 =head1 NAME
@@ -78,13 +78,15 @@ Digest::ED2K - Perl implementation of the ED2K hash used in ED2K URIs
 
 =head1 SYNOPSIS
 
- # Functional style
- use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
+	# Functional
+	use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
 
- $hash = ed2k $data;
- $hash = ed2k_hex $data;
- $hash = ed2k_base64 $data;
+	$hash = ed2k $data, ...;
+	$hash = ed2k_hex $data, ...;
+	$hash = ed2k_base64 $data, ...;
 
+	# Object Oriented
+	use Digest::ED2K;
 
  # OO style
  use Digest::ED2K;
