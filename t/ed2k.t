@@ -27,9 +27,9 @@ is((ed2k_hex 'aaa'), HEX->{aaa}, 'functional ed2k_hex ok');
 is((ed2k_base64 'aaa'), B64->{aaa}, 'functional ed2k_base64 ok');
 
 # Functional with @ prototypes
-is ed2k('a' x 3), BIN->{aaa}, 'functional ed2k @ ok';
-is ed2k_hex('a' x 3), HEX->{aaa}, 'functional ed2k_hex @ ok';
-is ed2k_base64('a' x 3), B64->{aaa}, 'functional ed2k_base64 @ ok';
+is ed2k(qw(a a a)), BIN->{aaa}, 'functional ed2k @ ok';
+is ed2k_hex(qw(a a a)), HEX->{aaa}, 'functional ed2k_hex @ ok';
+is ed2k_base64(qw(a a a)), B64->{aaa}, 'functional ed2k_base64 @ ok';
 
 # Test the tricky CHUNK_SIZE multiples.
 # http://wiki.anidb.net/w/Ed2k-hash#How_is_an_ed2k_hash_calculated_exactly.3F
