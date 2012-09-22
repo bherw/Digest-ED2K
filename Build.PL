@@ -8,7 +8,8 @@ use Module::Build 0.3601;
 my %module_build_args = (
 	module_name   => 'Digest::ED2K',
 	create_readme => 1,
-	license       => 'isc',
+	create_license => 1,
+	license       => 'artistic_2',
 	build_requires => {
 		'Test::More'     => 0,
 	},
