@@ -14,7 +14,6 @@ my %module_build_args = (
 	},
 	requires      => {
 		'perl'           => '5.08.0',
-		'Carp'           => '0',
 		'common::sense'  => '0',
 		'Digest::base'   => '1.03',
 		'Digest::MD4'    => '0',
