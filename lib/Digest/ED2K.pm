@@ -28,10 +28,16 @@ sub add {
 	my $self = shift;
 	my $buffer = join '', @_;
 
-	while ($buffer) {
-		my $need_length = CHUNK_SIZE - $self->{chunk_length};
-		my $chunk_ctx = $self->{chunk_ctx} ||= Digest::MD4->new;
+	my $chunk_ctx = $self->{chunk_ctx} ||= Digest::MD4->new;
+	my $need_length = CHUNK_SIZE - $self->{chunk_length};
 
+	if ($need_length > length $buffer) {
+		$chunk_ctx->add($buffer);
+		$self->{chunk_length} += length $buffer;
+		return $self;
+	}
+
+	while ($buffer) {
 		my $substr = substr $buffer, 0, $need_length;
 		$chunk_ctx->add($substr);
 		$self->{chunk_length} += length $substr;
@@ -43,8 +49,8 @@ sub add {
 			$self->{chunk_length} = 0;
 		}
 
-		return $self if $need_length >= length $buffer;
 		$buffer = substr $buffer, $need_length;
+		$need_length = CHUNK_SIZE - $self->{chunk_length};
 	}
 
 	return $self;
