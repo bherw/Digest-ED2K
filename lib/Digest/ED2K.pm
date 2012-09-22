@@ -12,45 +12,53 @@ use constant CHUNK_SIZE => 9728000;
 
 sub new {
 	my $class = shift;
-	bless {}, ref $class || $class;
+	bless {
+		chunk_ctx => Digest::MD4->new,
+	}, ref $class || $class;
 }
 
 sub clone {
 	my $self = shift;
 	bless {
 		($self->{ctx} ? (ctx => $self->{ctx}->clone) : ()),
-		($self->{chunk_ctx} ? (chunk_ctx => $self->{chunk_ctx}->clone) : ()),
+		chunk_ctx => $self->{chunk_ctx}->clone,
 		chunk_length => $self->{chunk_length},
 	}, ref($self);
 }
 
 sub add {
+	return shift->add(join '', @_) if @_ > 2;
+
 	my $self = shift;
-	my $buffer = join '', @_;
 
-	my $chunk_ctx = $self->{chunk_ctx} ||= Digest::MD4->new;
-	my $need_length = CHUNK_SIZE - $self->{chunk_length};
+	# Adding buffer won't cross chunk border.
+	# Avoid copying.
+	if (CHUNK_SIZE - $self->{chunk_length} > length $_[0]) {
+		$self->{chunk_ctx}->add($_[0]);
+		$self->{chunk_length} += length $_[0];
 
-	if ($need_length > length $buffer) {
-		$chunk_ctx->add($buffer);
-		$self->{chunk_length} += length $buffer;
 		return $self;
 	}
 
+	# Buffer crosses chunk border, copy for modification.
+	my $buffer = shift;
+
 	while ($buffer) {
+		my $need_length = CHUNK_SIZE - $self->{chunk_length};
+
 		my $substr = substr $buffer, 0, $need_length;
-		$chunk_ctx->add($substr);
+		$self->{chunk_ctx}->add($substr);
 		$self->{chunk_length} += length $substr;
 
+		# Completed chunk
 		if ($self->{chunk_length} == CHUNK_SIZE) {
 			my $ctx = $self->{ctx} ||= Digest::MD4->new;
 
-			$ctx->add( $chunk_ctx->digest );
+			$ctx->add( $self->{chunk_ctx}->digest );
 			$self->{chunk_length} = 0;
 		}
 
 		$buffer = substr $buffer, $need_length;
-		$need_length = CHUNK_SIZE - $self->{chunk_length};
 	}
 
 	return $self;
@@ -59,6 +67,7 @@ sub add {
 sub digest {
 	my $self = shift;
 	my ($ctx, $chunk_ctx) = delete @$self{qw( ctx chunk_ctx chunk_length )};
+	$self->{chunk_ctx} = Digest::MD4->new;
 
 	# One chunk
 	return $chunk_ctx->digest unless $ctx;
