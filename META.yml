@@ -26,3 +26,4 @@ requires:
 version: v1.0.0
 resources:
   license: http://www.perlfoundation.org/artistic_license_2_0
+  repository: https://github.com/Kulag/Digest-ED2K

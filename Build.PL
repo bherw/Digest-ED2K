@@ -13,6 +13,11 @@ my %module_build_args = (
 	build_requires => {
 		'Test::More'     => 0,
 	},
+	meta_merge => {
+		resources => {
+			repository => 'https://github.com/Kulag/Digest-ED2K',
+		},
+	},
 	requires      => {
 		'perl'           => '5.08.0',
 		'common::sense'  => '0',
