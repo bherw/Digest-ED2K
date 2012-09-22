@@ -13,6 +13,9 @@ my %module_build_args = (
 	build_requires => {
 		'Test::More'     => 0,
 	},
+	configure_requires => {
+		'version'        => '0.77',
+	},
 	meta_merge => {
 		resources => {
 			repository => 'https://github.com/Kulag/Digest-ED2K',
@@ -23,7 +26,6 @@ my %module_build_args = (
 		'common::sense'  => '0',
 		'Digest::base'   => '1.03',
 		'Digest::MD4'    => '0',
-		'version'        => '0.77',
 	},
 );
 

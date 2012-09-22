@@ -21,7 +21,8 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.40"
+            "Module::Build" : "0.40",
+            "version" : "0.77"
          }
       },
       "runtime" : {
@@ -29,8 +30,7 @@
             "Digest::MD4" : "0",
             "Digest::base" : "1.03",
             "common::sense" : "0",
-            "perl" : "v5.8.0",
-            "version" : "0.77"
+            "perl" : "v5.8.0"
          }
       }
    },
