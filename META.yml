@@ -1,12 +1,13 @@
 ---
-abstract: 'Perl implementation of the ED2k hash used in ED2K URIs'
+abstract: 'Calculate ED2K digests'
 author:
   - 'Benjamin Herweyer <benjamin.herweyer@gmail.com>'
 build_requires:
   Test::More: 0
 configure_requires:
-  Module::Build: 0.36
-generated_by: 'Module::Build version 0.3624'
+  Module::Build: 0.40
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4002, CPAN::Meta::Converter version 2.120921'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,11 +18,10 @@ provides:
     file: lib/Digest/ED2K.pm
     version: v1.0.0
 requires:
-  Carp: 0
   Digest::MD4: 0
-  base: 0
+  Digest::base: 1.03
   common::sense: 0
-  perl: v5.08.0
+  perl: v5.8.0
   version: 0.77
 version: v1.0.0
 resources:

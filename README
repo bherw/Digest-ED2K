@@ -1,40 +1,80 @@
 NAME
-    Digest::ED2K - Perl implementation of the ED2k hash used in ED2K URIs
+    Digest::ED2K - Calculate ED2K digests
 
 SYNOPSIS
-     # Functional style
-     use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
+            # Functional
+            use Digest::ED2K qw(ed2k ed2k_hex ed2k_base64);
 
-     $hash = ed2k $data;
-     $hash = ed2k_hex $data;
-     $hash = ed2k_base64 $data;
+            my $digest = ed2k $data;
+            my $hexdigest = ed2k_hex $data
+            my $base64_digest = ed2k_base64 $data;
 
+            # Object Oriented
+            use Digest::ED2K;
 
-     # OO style
-     use Digest::ED2K;
+            my $ctx = Digest::ED2K->new;
 
-     $ctx = Digest::ED2K->new;
+            $ctx->add($bytes);
+            $ctx->addfile(*FILE);
 
-     $ctx->add($data);
-     $ctx->addfile(*FILE);
-
-     $digest = $ctx->digest;
-     $digest = $ctx->hexdigest;
-     $digest = $ctx->b64digest;
+            my $digest = $ctx->digest;
+            my $hexdigest = $ctx->hexdigest;
+            my $base64_digest = $ctx->b64digest;
 
 DESCRIPTION
-    This module allows you to use the ED2K hash algorithm from within Perl
-    programs. It has the same interface as Digest.
+    Digest::ED2K progressively calculates ED2K digests of data.
 
-SEE ALSO
-    Exporter::Tiny for additional import options.
+FUNCTIONS
+    Digest::ED2K implements the following functions.
 
-AUTHORS
-    Benjamin Herweyer <benjamin.herweyer@gmail.com>
+  `ed2k'
+            my $digest = ed2k $bytes, ...;
 
+    Generate binary ED2K digest for string.
+
+  `ed2k_hex'
+            my $hexdigest = ed2k_hex $bytes, ...;
+
+    Generate hex ED2K digest for string.
+
+  `ed2k_base64'
+            my $base64_digest = ed2k_base64 $bytes, ...;
+
+    Generate base64 ED2K digest for string.
+
+METHODS
+    Digest::ED2K inherits all methods from Digest::base (See Digest for
+    documentation) and implements the following new ones.
+
+  `new'
+            my $ctx = Digest->new('ED2K');
+            my $ctx = Digest::ED2K->new;
+
+    Construct a new Digest::ED2K object.
+
+  `add'
+            $ctx = $ctx->add($bytes, ...);
+
+    Append binary data.
+
+  `clone'
+            my $ctx_clone = $ctx->clone;
+
+    Clone this message context.
+
+  `digest'
+            my $digest = $ctx->digest;
+
+    Binary ED2K digest for this message context.
 
 REPOSITORY
     http://github.com/Kulag/Digest-ED2K
+
+SEE ALSO
+    Digest, Digest::MD4
+
+AUTHOR
+    Benjamin Herweyer <benjamin.herweyer@gmail.com>
 
 COPYRIGHT AND LICENSE
     Copyright (C) 2011-2012, Benjamin Herweyer.
