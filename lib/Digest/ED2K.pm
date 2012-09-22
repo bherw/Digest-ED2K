@@ -8,7 +8,7 @@ use version 0.77; our $VERSION = version->declare('v1.0');
 use Digest::base 1.03;
 BEGIN { push @Digest::ED2K::ISA, 'Digest::base' }
 
-use constant CHUNK_SIZE => 9728000;
+sub CHUNK_SIZE() { 9728000 }
 
 sub new {
 	my $class = shift;
