@@ -41,7 +41,7 @@ sub add {
 		return $self;
 	}
 
-	# Buffer crosses chunk border, copy for modification.
+	# Buffer intersects chunk border, copy for modification.
 	my $buffer = shift;
 
 	while ($buffer) {
