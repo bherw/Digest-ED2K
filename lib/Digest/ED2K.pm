@@ -7,7 +7,7 @@ our @EXPORT_OK = qw(ed2k ed2k_hex ed2k_base64);
 use Digest::base 1.03;
 BEGIN { push @Digest::ED2K::ISA, 'Digest::base' }
 
-use version 0.77; our $VERSION = version->declare('v1.1');
+use version 0.77; our $VERSION = version->declare('v1.2');
 
 sub CHUNK_SIZE() { 9728000 }
 
@@ -67,14 +67,13 @@ sub add {
 
 sub digest {
 	my $self = shift;
-	my ($ctx, $chunk_ctx) = delete @$self{qw( ctx chunk_ctx chunk_length )};
-	$self->{chunk_ctx} = Digest::MD4->new;
+	my ($ctx) = delete @$self{qw( ctx chunk_length )};
 
 	# One chunk
-	return $chunk_ctx->digest unless $ctx;
+	return $self->{chunk_ctx}->digest unless $ctx;
 
 	# Multi chunk
-	$ctx->add( $chunk_ctx->digest )->digest;
+	$ctx->add($self->{chunk_ctx}->digest)->digest;
 }
 
 sub ed2k(@) {
