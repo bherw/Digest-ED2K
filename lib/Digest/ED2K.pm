@@ -13,18 +13,16 @@ sub CHUNK_SIZE() { 9728000 }
 
 sub new {
 	my $class = shift;
-	bless {
-		chunk_ctx => Digest::MD4->new,
-	}, ref $class || $class;
+	bless { chunk_ctx => Digest::MD4->new }, ref $class || $class;
 }
 
 sub clone {
 	my $self = shift;
 	bless {
 		($self->{ctx} ? (ctx => $self->{ctx}->clone) : ()),
-		chunk_ctx => $self->{chunk_ctx}->clone,
+		chunk_ctx    => $self->{chunk_ctx}->clone,
 		chunk_length => $self->{chunk_length},
-	}, ref($self);
+	}, ref $self;
 }
 
 sub add {
@@ -55,7 +53,7 @@ sub add {
 		if ($self->{chunk_length} == CHUNK_SIZE) {
 			my $ctx = $self->{ctx} ||= Digest::MD4->new;
 
-			$ctx->add( $self->{chunk_ctx}->digest );
+			$ctx->add($self->{chunk_ctx}->digest);
 			$self->{chunk_length} = 0;
 		}
 
