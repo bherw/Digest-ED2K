@@ -18,7 +18,7 @@ my %module_build_args = (
 	},
 	meta_merge => {
 		resources => {
-			repository => 'https://github.com/Kulag/Digest-ED2K',
+			repository => 'https://github.com/bherw/Digest-ED2K',
 		},
 	},
 	requires      => {

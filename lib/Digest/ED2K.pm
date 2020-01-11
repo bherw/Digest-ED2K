@@ -7,7 +7,7 @@ our @EXPORT_OK = qw(ed2k ed2k_hex ed2k_base64);
 use Digest::base 1.03;
 BEGIN { push @Digest::ED2K::ISA, 'Digest::base' }
 
-use version 0.77; our $VERSION = version->declare('v1.2');
+use version 0.077; our $VERSION = version->declare('v1.1.1');
 
 sub CHUNK_SIZE() { 9728000 }
 
@@ -172,7 +172,7 @@ Binary ED2K digest for this message context.
 
 =head1 REPOSITORY
 
-http://github.com/Kulag/Digest-ED2K
+http://github.com/bherw/Digest-ED2K
 
 =head1 SEE ALSO
 
